@@ -1,0 +1,22 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "This is a simple tictactoe app where, when given a board configuration via a GET request, program plays a turn after verifying that the board is valid. In the case of invalid board config, a 400 status code is returned. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tic",
+    "tac",
+    "toe",
+    "wave"
+  ],
+  "author": "Ibrahima Tounkara",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "underscore": "^1.9.1"
+  }
+}
