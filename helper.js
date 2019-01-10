@@ -29,9 +29,11 @@ module.exports.isValid = (board) => {
     else if (board[i] != ' ') return false;
   }
   // number of Xs must be bigger or equal to Os for O to play
-  if (numXs - numOs !== 0 && numXs - numOs !== 1 && numOs + numXs !== 9) {
+  if ((numXs - numOs !== 0 && numXs - numOs !== 1 && numOs + numXs !== 9)
+    || winningConfig(board)) {
     return false;
   }
+
   return true;
 }
 
@@ -95,4 +97,56 @@ makeStrategicMove = (board) => {
     }
   }
   return freeSpots[Math.floor(Math.random() * freeSpots.length)];
+}
+
+
+winningConfig = (board) => {
+  if (diagonalWin(board) || xAxisWin(board) || yAxisWin(board)) return true;
+  return false;
+}
+
+// checks both diagonals
+diagonalWin = (board) => {
+  xWin = 0;
+  oWin = 0;
+  let i;
+  for (i = 0; i < board.length; i+=4) {
+    if (board[i] === 'o') oWin++;
+    if (board[i] === 'x') xWin++;
+  }
+  if (xWin === 3 || oWin === 3) return true;
+
+  xWin = 0;
+  oWin = 0;
+  for (i = 2; i < board.length; i+=2) {
+    if (board[i] === 'o') oWin++;
+    if (board[i] === 'x') xWin++;
+  }
+  if (xWin === 3 || oWin === 3) return true;
+}
+
+// checks all three rows
+xAxisWin = (board) => {
+  for (let i = 0; i < board.length; i+=3) {
+    xWin = 0;
+    oWin = 0;
+    for (let j = i; j < 3; j++) {
+      if (board[j] === 'o') oWin++;
+      if (board[j] === 'x') xWin++;
+    }
+    if (xWin === 3 || oWin === 0) return true;
+  }
+}
+
+// checks all three colums
+yAxisWin = (board) => {
+  for (let i = 0; i < board.length; i++) {
+    xWin = 0;
+    oWin = 0;
+    for (let j = i; j < board.length; j+=3) {
+      if (board[j] === 'o') oWin++;
+      if (board[j] === 'x') xWin++;
+    }
+    if (xWin === 3 || oWin === 0) return true;
+  }
 }
