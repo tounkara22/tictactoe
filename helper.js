@@ -1,3 +1,4 @@
+/** By: Ibrahima Tounkara **/
 const _ = require('underscore');
 const edgeIndices = [1, 3, 5, 7]
 const cornerIndices = [0, 2, 6, 8];
@@ -99,7 +100,7 @@ makeStrategicMove = (board) => {
   return freeSpots[Math.floor(Math.random() * freeSpots.length)];
 }
 
-
+// checks if board has winning position
 winningConfig = (board) => {
   if (diagonalWin(board) || xAxisWin(board) || yAxisWin(board)) return true;
   return false;
