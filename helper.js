@@ -1,4 +1,3 @@
-/** By: Ibrahima Tounkara **/
 const _ = require('underscore');
 const edgeIndices = [1, 3, 5, 7]
 const cornerIndices = [0, 2, 6, 8];
@@ -31,7 +30,7 @@ module.exports.isValid = (board) => {
   }
   // number of Xs must be bigger or equal to Os for O to play
   if ((numXs - numOs !== 0 && numXs - numOs !== 1 && numOs + numXs !== 9)
-    || winningConfig(board)) {
+    || !noWinningConfig(board)) {
     return false;
   }
 
@@ -100,8 +99,8 @@ makeStrategicMove = (board) => {
   return freeSpots[Math.floor(Math.random() * freeSpots.length)];
 }
 
-// checks if board has winning position
-winningConfig = (board) => {
+
+noWinningConfig = (board) => {
   if (diagonalWin(board) || xAxisWin(board) || yAxisWin(board)) return true;
   return false;
 }

@@ -2,8 +2,10 @@
 var express = require('express');
 var helper = require('./helper');
 var port = 3000;
+const cors = require('cors');
 var app = express();
 
+app.use(cors());
 app.get('/', (req, res) => {
   let board = req.query.board;
 	// no parameter passed
