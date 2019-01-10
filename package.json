@@ -2,8 +2,9 @@
   "name": "tictactoe",
   "version": "1.0.0",
   "description": "This is a simple tictactoe app where, when given a board configuration via a GET request, program plays a turn after verifying that the board is valid. In the case of invalid board config, a 400 status code is returned. ",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
