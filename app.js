@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
       res.status(400).send('No more move is possible for o');
     } else {  // o can play now
       var newBoard = helper.playTurn(board);
-			// res.send(newBoard);
-      res.send(newBoard.replace(/ /gi, '+'))
+			res.send(newBoard);
+      // res.send(newBoard.replace(/ /gi, '+'))
     }
   }
 });
